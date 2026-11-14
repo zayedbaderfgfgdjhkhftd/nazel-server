@@ -284,7 +284,7 @@ def extract_sync(url: str) -> dict[str, Any]:
 
 def error_headers(e: Exception) -> dict[str, str]:
     """Raw yt-dlp message (ASCII, trimmed) for diagnostics; the app ignores it."""
-    raw = re.sub(r"s+", " ", str(e)).encode("ascii", "ignore").decode()[:300]
+    raw = re.sub(r"\s+", " ", str(e)).encode("ascii", "ignore").decode()[:300]
     return {"X-Error": raw}
 
 
