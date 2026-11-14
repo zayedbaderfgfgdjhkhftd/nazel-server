@@ -12,3 +12,10 @@ services:
         value: "30"
       - key: NAZEL_MAX_FILESIZE_MB
         value: "300"
+      # In-app updater: bump these with every release.
+      - key: NAZEL_APP_VERSION
+        value: "1.2.0"
+      - key: NAZEL_APP_BUILD
+        value: "3"
+      - key: NAZEL_APP_URL
+        value: "https://github.com/zayedbaderfgfgdjhkhftd/nazel-download/releases/latest/download/Nazel.apk"
