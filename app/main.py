@@ -282,6 +282,12 @@ def extract_sync(url: str) -> dict[str, Any]:
     }
 
 
+def error_headers(e: Exception) -> dict[str, str]:
+    """Raw yt-dlp message (ASCII, trimmed) for diagnostics; the app ignores it."""
+    raw = re.sub(r"s+", " ", str(e)).encode("ascii", "ignore").decode()[:300]
+    return {"X-Error": raw}
+
+
 def friendly_error(e: Exception) -> tuple[int, str]:
     msg = str(e).lower()
     if "private" in msg or "login" in msg or "cookies" in msg or "sign in" in msg:
@@ -316,7 +322,7 @@ def app_version() -> dict[str, Any]:
 
 @app.get("/health")
 def health() -> dict[str, Any]:
-    return {"ok": True, "yt_dlp": yt_dlp.version.__version__}
+    return {"ok": True, "yt_dlp": yt_dlp.version.__version__, "rev": 2}
 
 
 @app.post("/api/extract", dependencies=[Depends(require_key), Depends(rate_limit)])
@@ -329,7 +335,7 @@ async def extract(req: ExtractRequest) -> JSONResponse:
         data = await asyncio.to_thread(extract_sync, url)
     except yt_dlp.utils.DownloadError as e:
         status, code = friendly_error(e)
-        raise HTTPException(status_code=status, detail=code) from e
+        raise HTTPException(status_code=status, detail=code, headers=error_headers(e)) from e
     if not any(i["formats"] or i["image_url"] for i in data["items"]):
         raise HTTPException(status_code=404, detail="no_media_found")
     cache_put(key, data)
@@ -380,7 +386,7 @@ async def download(
         path = await asyncio.to_thread(run)
     except yt_dlp.utils.DownloadError as e:
         status, code = friendly_error(e)
-        raise HTTPException(status_code=status, detail=code) from e
+        raise HTTPException(status_code=status, detail=code, headers=error_headers(e)) from e
 
     ext = os.path.splitext(path)[1] or ".mp4"
     media = "audio/mp4" if audio_only else "video/mp4"
