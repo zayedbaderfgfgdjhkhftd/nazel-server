@@ -1,0 +1,14 @@
+# One-click deploy on Render.com: New → Blueprint → pick this repo.
+# Free plan: sleeps after ~15 min idle, first request then takes ~50 s.
+# Switch `plan` to `starter` ($7/mo) to keep it always awake.
+services:
+  - type: web
+    name: nazel-api
+    runtime: docker
+    plan: free
+    healthCheckPath: /health
+    envVars:
+      - key: NAZEL_RATE_LIMIT_PER_MIN
+        value: "30"
+      - key: NAZEL_MAX_FILESIZE_MB
+        value: "300"
