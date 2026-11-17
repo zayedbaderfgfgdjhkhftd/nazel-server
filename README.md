@@ -1,12 +1,18 @@
-# تحميل تطبيق سَطر (Satr PDF) 1.0.0 — نسخة تجريبية
+# تحميل تطبيق سَطر (Satr PDF) — الإصدار 1.0.1 (تجريبي)
 
 **لأغلب الهواتف الحديثة:**
-https://github.com/zayedbaderfgfgdjhkhftd/nazel-server/raw/satr-pdf-download/Satr-PDF-1.0.0-arm64.apk
+https://github.com/zayedbaderfgfgdjhkhftd/nazel-server/raw/satr-pdf-download/Satr-PDF-arm64.apk
 
 **للهواتف القديمة (إذا ظهر أن التطبيق غير متوافق):**
-https://github.com/zayedbaderfgfgdjhkhftd/nazel-server/raw/satr-pdf-download/Satr-PDF-1.0.0-armv7.apk
+https://github.com/zayedbaderfgfgdjhkhftd/nazel-server/raw/satr-pdf-download/Satr-PDF-armv7.apk
 
+هذه الروابط ثابتة وتشير دائمًا إلى أحدث نسخة.
 بعد التنزيل افتح الملف واسمح بالتثبيت من هذا المصدر إذا طلب الهاتف ذلك.
+الإصدار 1.0.1 يُثبَّت كتحديث فوق 1.0.0 مباشرة.
+
+## الجديد في 1.0.1
+- الملف الذي تختاره من الرئيسية، أو تفتحه من مدير الملفات بـ «فتح بواسطة سطر»، يُعرض مباشرة.
+- في العارض: حفظ في ملفاتي، مشاركة، وأدوات لهذا الملف.
 
 نسخة تجريبية موقّعة بمفتاح تجريبي (ليست للنشر في Google Play). الكود المصدري في الفرع `satr-pdf`.
 التحقق من سلامة الملفات: `SHA256SUMS.txt`.
