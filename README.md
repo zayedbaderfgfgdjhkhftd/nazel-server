@@ -19,7 +19,7 @@ Native Android app built with **Flutter/Dart**; AdMob-ready (ads are off).
 كل رفع للمستودع يبني التطبيق على GitHub تلقائيًا: **Actions ← آخر تشغيل ← Artifacts ← `satr-pdf-apk`**. التفاصيل في [`DEPLOYMENT.md`](DEPLOYMENT.md).
 
 ## التشغيل والبناء (للمطوّرين)
-المتطلبات: Flutter 3.50 (Dart 3.14)، Android SDK (platform 36، NDK 28.2)، JDK 17.
+المتطلبات: Flutter 3.50 (Dart 3.14)، Android SDK (platform 36، NDK 28.2)، JDK 21.
 ```bash
 flutter pub get
 flutter run                      # على هاتف أو محاكي أندرويد

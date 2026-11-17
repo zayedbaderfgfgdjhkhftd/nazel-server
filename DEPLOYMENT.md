@@ -63,7 +63,7 @@ flutter build appbundle --release
 ارفع رقم الإصدار في `pubspec.yaml` (`version: 1.0.1+2`، الرقم بعد + يجب أن يزيد دائمًا) وفي `lib/config/app_config.dart`، ثم ابنِ AAB جديدًا وارفعه.
 
 ## 6) البناء على جهازك (اختياري)
-يلزم Flutter 3.50 و Android SDK و JDK 17:
+يلزم Flutter 3.50 و Android SDK و JDK 21:
 ```bash
 flutter pub get
 flutter test
