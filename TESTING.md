@@ -9,7 +9,7 @@ listed at the end.
 
 | Suite | Command | Result |
 |---|---|---|
-| Static analysis | `flutter analyze` | 0 errors, 0 warnings (only deprecation notices inside generated l10n code) |
+| Static analysis | `flutter analyze` | No issues found (exit code 0; generated l10n code excluded) |
 | Unit + widget tests | `flutter test` | **71 / 71 passed** |
 | End-to-end on the real app (Linux desktop build, real PDFium + Tesseract) | `xvfb-run flutter test integration_test -d linux` | **7 / 7 passed** |
 | Android release build | `flutter build apk --release` | builds; arm64 APK permissions contain **no INTERNET** |
