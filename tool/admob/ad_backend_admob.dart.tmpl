@@ -1,0 +1,94 @@
+// AdMob ad backend. Installed by tool/admob/enable_admob.sh, which copies
+// this file over lib/ads/ad_backend.dart. Do not edit lib/ads/ad_backend.dart
+// by hand while ads are enabled; edit this template and re-run the script.
+//
+// Rules kept by this implementation (spec section 9):
+//  - Google UMP consent form is shown before any ad request where required;
+//  - only one small banner per screen (placements in lib/ads/ad_slot.dart);
+//  - never during processing, never in the viewer, no interstitials.
+import 'dart:async';
+
+import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:material_ui/material_ui.dart';
+
+abstract class AdBackend {
+  Future<void> initialize(BuildContext context);
+  Widget buildBanner(BuildContext context, String placement);
+}
+
+class AdMobBackend implements AdBackend {
+  const AdMobBackend();
+
+  static const String bannerUnitId = 'BANNER_UNIT_ID_PLACEHOLDER';
+  static final ValueNotifier<bool> ready = ValueNotifier(false);
+
+  @override
+  Future<void> initialize(BuildContext context) async {
+    final done = Completer<void>();
+    ConsentInformation.instance.requestConsentInfoUpdate(
+      ConsentRequestParameters(),
+      () async {
+        await ConsentForm.loadAndShowConsentFormIfRequired((FormError? error) {});
+        if (await ConsentInformation.instance.canRequestAds()) {
+          await MobileAds.instance.initialize();
+          ready.value = true;
+        }
+        if (!done.isCompleted) done.complete();
+      },
+      (FormError error) {
+        if (!done.isCompleted) done.complete();
+      },
+    );
+    return done.future;
+  }
+
+  @override
+  Widget buildBanner(BuildContext context, String placement) => ValueListenableBuilder<bool>(
+        valueListenable: ready,
+        builder: (context, ok, _) => ok ? const _Banner() : const SizedBox.shrink(),
+      );
+}
+
+class _Banner extends StatefulWidget {
+  const _Banner();
+
+  @override
+  State<_Banner> createState() => _BannerState();
+}
+
+class _BannerState extends State<_Banner> {
+  BannerAd? _ad;
+  bool _loaded = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _ad = BannerAd(
+      adUnitId: AdMobBackend.bannerUnitId,
+      size: AdSize.banner,
+      request: const AdRequest(),
+      listener: BannerAdListener(
+        onAdLoaded: (_) => setState(() => _loaded = true),
+        onAdFailedToLoad: (ad, _) => ad.dispose(),
+      ),
+    )..load();
+  }
+
+  @override
+  void dispose() {
+    _ad?.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    if (!_loaded || _ad == null) return const SizedBox.shrink();
+    return SizedBox(
+      width: _ad!.size.width.toDouble(),
+      height: _ad!.size.height.toDouble(),
+      child: AdWidget(ad: _ad!),
+    );
+  }
+}
+
+const AdBackend adBackend = AdMobBackend();

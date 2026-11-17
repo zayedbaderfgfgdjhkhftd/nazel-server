@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 432 432" width="432" height="432">
+  <!-- Adaptive-icon foreground (108dp canvas, art inside the 66dp safe zone). Transparent background. -->
+  <g transform="translate(216 216) scale(0.62) translate(-256 -256)">
+    <rect x="136" y="96" width="240" height="320" rx="22" fill="#FFFFFF"/>
+    <rect x="172" y="146" width="168" height="16" rx="8" fill="#9CA3AF"/>
+    <rect x="204" y="192" width="136" height="16" rx="8" fill="#9CA3AF"/>
+    <rect x="160" y="230" width="194" height="40" rx="12" fill="#FFD23F"/>
+    <rect x="180" y="242" width="160" height="16" rx="8" fill="#121417"/>
+    <rect x="188" y="292" width="152" height="16" rx="8" fill="#9CA3AF"/>
+    <rect x="228" y="338" width="112" height="16" rx="8" fill="#9CA3AF"/>
+  </g>
+</svg>

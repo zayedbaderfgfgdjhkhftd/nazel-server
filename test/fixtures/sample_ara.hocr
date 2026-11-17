@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <title></title>
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+  <meta name='ocr-system' content='tesseract 5.3.4' />
+  <meta name='ocr-capabilities' content='ocr_page ocr_carea ocr_par ocr_line ocrx_word ocrp_wconf'/>
+ </head>
+ <body>
+  <div class='ocr_page' id='page_1' title='image "test/fixtures/ocr_arabic_naskh.png"; bbox 0 0 1212 384; ppageno 0; scan_res 70 70'>
+   <div class='ocr_carea' id='block_1_1' title="bbox 537 67 1154 321">
+    <p class='ocr_par' dir='rtl' id='par_1_1' lang='ara' title="bbox 537 67 1154 173">
+     <span class='ocr_line' id='line_1_1' title="bbox 537 67 1154 110; baseline 0 -9; x_size 41.914112; x_descenders 6.9141111; x_ascenders 12">
+      <span class='ocrx_word' id='word_1_1' title='bbox 1088 67 1154 101; x_wconf 92'>سطر</span>
+      <span class='ocrx_word' id='word_1_2' title='bbox 1002 67 1078 103; x_wconf 92'>تطبيق</span>
+      <span class='ocrx_word' id='word_1_3' title='bbox 911 78 982 110; x_wconf 92'>عربي</span>
+      <span class='ocrx_word' id='word_1_4' title='bbox 797 67 897 100; x_wconf 91'>لمعالجة</span>
+      <span class='ocrx_word' id='word_1_5' title='bbox 703 67 783 93; x_wconf 91'>ملفات</span>
+      <span class='ocrx_word' id='word_1_6' title='bbox 637 67 690 104; x_wconf 93'>على</span>
+      <span class='ocrx_word' id='word_1_7' title='bbox 537 67 623 101; x_wconf 92'>جهازك</span>
+     </span>
+     <span class='ocr_line' id='line_1_2' title="bbox 798 130 1154 173; baseline 0 -8; x_size 43; x_descenders 8; x_ascenders 8">
+      <span class='ocrx_word' id='word_1_8' title='bbox 1058 138 1154 165; x_wconf 93'>الملفات</span>
+      <span class='ocrx_word' id='word_1_9' title='bbox 1027 126 1053 177; x_wconf 93'>لا</span>
+      <span class='ocrx_word' id='word_1_10' title='bbox 950 126 1014 177; x_wconf 92'>تغادر</span>
+      <span class='ocrx_word' id='word_1_11' title='bbox 857 126 936 177; x_wconf 92'>الجهاز</span>
+      <span class='ocrx_word' id='word_1_12' title='bbox 798 126 842 177; x_wconf 89'>أبدا</span>
+     </span>
+    </p>
+
+    <p class='ocr_par' dir='rtl' id='par_1_2' lang='ara' title="bbox 706 202 1154 248">
+     <span class='ocr_line' id='line_1_3' title="bbox 706 202 1154 248; baseline 0 -3; x_size 50.515339; x_descenders 7.5153379; x_ascenders 18">
+      <span class='ocrx_word' id='word_1_13' title='bbox 1088 210 1154 248; x_wconf 96'>يعمل</span>
+      <span class='ocrx_word' id='word_1_14' title='bbox 1007 221 1075 248; x_wconf 93'>بدون</span>
+      <span class='ocrx_word' id='word_1_15' title='bbox 903 210 993 246; x_wconf 93'>إنترنت</span>
+      <span class='ocrx_word' id='word_1_16' title='bbox 846 221 890 245; x_wconf 93'>بعد</span>
+      <span class='ocrx_word' id='word_1_17' title='bbox 787 202 834 247; x_wconf 93'>أول</span>
+      <span class='ocrx_word' id='word_1_18' title='bbox 706 211 773 245; x_wconf 92'>زيارة</span>
+     </span>
+    </p>
+
+    <p class='ocr_par' dir='rtl' id='par_1_3' lang='ara' title="bbox 619 282 1154 321">
+     <span class='ocr_line' id='line_1_4' title="bbox 619 282 1154 321; baseline 0 -12; x_size 44.166668; x_descenders 8.166667; x_ascenders 8.833333">
+      <span class='ocrx_word' id='word_1_19' title='bbox 1031 282 1154 321; x_wconf 92'>استخراج</span>
+      <span class='ocrx_word' id='word_1_20' title='bbox 948 283 1017 320; x_wconf 91'>النص</span>
+      <span class='ocrx_word' id='word_1_21' title='bbox 909 269 944 325; x_wconf 93'>من</span>
+      <span class='ocrx_word' id='word_1_22' title='bbox 818 269 884 325; x_wconf 93'>الصور</span>
+      <span class='ocrx_word' id='word_1_23' title='bbox 727 269 804 325; x_wconf 92'>باللغة</span>
+      <span class='ocrx_word' id='word_1_24' title='bbox 619 282 708 317; x_wconf 92'>العربية</span>
+     </span>
+    </p>
+   </div>
+  </div>
+ </body>
+</html>

@@ -1,0 +1,27 @@
+{
+  "ocr_arabic_naskh.png": {
+    "lang": "ara",
+    "lines": [
+      "سطر تطبيق عربي لمعالجة ملفات على جهازك",
+      "الملفات لا تغادر الجهاز أبدا",
+      "يعمل بدون إنترنت بعد أول زيارة",
+      "استخراج النص من الصور باللغة العربية"
+    ]
+  },
+  "ocr_arabic_readex.png": {
+    "lang": "ara",
+    "lines": [
+      "سطر تطبيق عربي لمعالجة ملفات على جهازك",
+      "الملفات لا تغادر الجهاز أبدا",
+      "يعمل بدون إنترنت بعد أول زيارة",
+      "استخراج النص من الصور باللغة العربية"
+    ]
+  },
+  "ocr_english.png": {
+    "lang": "eng",
+    "lines": [
+      "Satr keeps your files on your device",
+      "Merge split and compress documents offline"
+    ]
+  }
+}

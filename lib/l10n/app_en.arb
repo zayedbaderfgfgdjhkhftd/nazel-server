@@ -1,0 +1,577 @@
+{
+  "@@locale": "en",
+  "navHome": "Home",
+  "navTools": "Tools",
+  "navFiles": "My files",
+  "navSettings": "Settings",
+  "greetingMorning": "Good morning",
+  "greetingAfternoon": "Good afternoon",
+  "greetingEvening": "Good evening",
+  "homePickTitle": "Choose a file",
+  "homePickSubtitle": "A PDF or an image from your device",
+  "homeQuickActions": "Quick actions",
+  "homeRecent": "Recent files",
+  "homeSeeAll": "See all",
+  "homeEmptyRecent": "Files you create will appear here.",
+  "privacyLine": "Your files stay on your device",
+  "toolsTitle": "Tools",
+  "groupOrganize": "Organize",
+  "groupConvert": "Convert",
+  "groupEdit": "Edit",
+  "groupText": "Text",
+  "groupOptimize": "Optimize",
+  "toolMerge": "Merge PDF",
+  "toolMergeDesc": "Combine several PDFs into one",
+  "toolSplit": "Split PDF",
+  "toolSplitDesc": "Split by page ranges or every few pages",
+  "toolExtract": "Extract pages",
+  "toolExtractDesc": "Pick pages and save them as a new PDF",
+  "toolOrganize": "Organize pages",
+  "toolOrganizeDesc": "Reorder, rotate, delete, duplicate or add pages",
+  "toolCompress": "Compress PDF",
+  "toolCompressDesc": "Make the file smaller",
+  "toolPdfToImages": "PDF to images",
+  "toolPdfToImagesDesc": "Save pages as JPG or PNG",
+  "toolImagesToPdf": "Images to PDF",
+  "toolImagesToPdfDesc": "Turn photos and scans into a PDF",
+  "toolWatermark": "Watermark",
+  "toolWatermarkDesc": "Add text or an image over the pages",
+  "toolPageNumbers": "Page numbers",
+  "toolPageNumbersDesc": "Number the pages of a PDF",
+  "toolSignature": "Drawn signature",
+  "toolSignatureDesc": "Draw or upload your signature and place it",
+  "toolTextExtract": "Extract text",
+  "toolTextExtractDesc": "Copy the text layer of a PDF",
+  "toolOcr": "Text from image (OCR)",
+  "toolOcrDesc": "Read Arabic and English text from images",
+  "toolFileInfo": "File info",
+  "toolFileInfoDesc": "Pages, size and metadata",
+  "toolImported": "Imported",
+  "toolShared": "Shared to the app",
+  "pickPdf": "Choose a PDF",
+  "pickPdfs": "Choose PDFs",
+  "pickImages": "Choose images",
+  "pickImageOrPdf": "Choose an image or a PDF",
+  "pickImage": "Choose an image",
+  "fromDevice": "From device",
+  "fromMyFiles": "From My files",
+  "addMore": "Add more",
+  "remove": "Remove",
+  "change": "Change",
+  "cancel": "Cancel",
+  "ok": "OK",
+  "close": "Close",
+  "back": "Back",
+  "done": "Done",
+  "retry": "Try again",
+  "continueAnyway": "Continue",
+  "yes": "Yes",
+  "no": "No",
+  "none": "—",
+  "loading": "Loading…",
+  "working": "Working…",
+  "progressPage": "Page {current} of {total}",
+  "@progressPage": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "progressFile": "File {current} of {total}",
+  "@progressFile": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "progressVerifying": "Checking the result…",
+  "progressPreparingOcr": "Preparing language data…",
+  "progressReadingText": "Reading text…",
+  "cancelled": "Cancelled. No file was created.",
+  "resultTitle": "Done",
+  "resultSaved": "Saved to My files",
+  "open": "Open",
+  "share": "Share",
+  "save": "Save",
+  "saveToDevice": "Save to device",
+  "savedToDevice": "Saved",
+  "useAnotherTool": "Use another tool",
+  "pagesCount": "{count, plural, =1{1 page} other{{count} pages}}",
+  "@pagesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "filesCount": "{count, plural, =1{1 file} other{{count} files}}",
+  "@filesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "imagesCount": "{count, plural, =1{1 image} other{{count} images}}",
+  "@imagesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "sizeLabel": "Size",
+  "errCorrupt": "The file is damaged or not supported.",
+  "errEncrypted": "This PDF is password-protected. You can view it, but editing tools can't process protected files in this version.",
+  "errUnsupportedType": "This file type isn't supported here.",
+  "errNotPdf": "Please choose a PDF file.",
+  "errNotImage": "Please choose an image (JPG, PNG, WebP or HEIC).",
+  "errHeic": "This device can't read HEIC images. Android 9 or newer is needed.",
+  "errEmptyFile": "The file is empty.",
+  "errOutputInvalid": "Something went wrong: the result failed verification, so it wasn't saved.",
+  "errOcr": "Couldn't read text from this image.",
+  "errNothingSelected": "Choose what to work on first.",
+  "errGeneric": "Something went wrong. Please try again.",
+  "largeFileTitle": "Large file",
+  "largeFileBody": "This file is {size}. Large files may be slow or fail on this device. Continue anyway?",
+  "@largeFileBody": {
+    "placeholders": {
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "mergeHint": "Drag to set the order. The top file comes first.",
+  "mergeNeedTwo": "Add at least two PDFs.",
+  "mergeAction": "Merge files",
+  "splitModeRanges": "By page ranges",
+  "splitModeEvery": "Every few pages",
+  "splitModeEach": "Each page separately",
+  "splitRangesLabel": "Page ranges",
+  "splitRangesHint": "e.g. 1-3, 5, 8-10",
+  "splitRangesHelp": "Each range becomes its own file.",
+  "splitEveryLabel": "Pages per file",
+  "splitZipNote": "If there is more than one file, they are packed into one ZIP.",
+  "splitAction": "Split",
+  "rangeErrSyntax": "Check the format, e.g. 1-3, 5",
+  "rangeErrOutOfBounds": "Pages must be between 1 and {max}.",
+  "@rangeErrOutOfBounds": {
+    "placeholders": {
+      "max": {
+        "type": "int"
+      }
+    }
+  },
+  "rangeErrEmpty": "Enter at least one page.",
+  "rangeErrReversed": "A range must go from the smaller page to the larger one.",
+  "extractHint": "Tap pages to select them.",
+  "selectAll": "Select all",
+  "selectNone": "Clear selection",
+  "selectedCount": "Selected: {count}",
+  "@selectedCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "extractNeedOne": "Select at least one page.",
+  "extractAction": "Extract pages",
+  "organizeHint": "Long-press and drag a page to move it.",
+  "rotateLeft": "Rotate left",
+  "rotateRight": "Rotate right",
+  "duplicate": "Duplicate",
+  "delete": "Delete",
+  "insertBlank": "Add a blank page",
+  "blankA4": "A4",
+  "blankLetter": "Letter",
+  "blankSameSize": "Same size as this page",
+  "blankPage": "Blank page",
+  "pageN": "Page {n}",
+  "@pageN": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "organizeNeedOne": "Keep at least one page.",
+  "organizeAction": "Save changes",
+  "reset": "Reset",
+  "compressLight": "Light",
+  "compressLightDesc": "Lossless clean-up. Text stays selectable.",
+  "compressRecommended": "Recommended",
+  "compressRecommendedDesc": "Re-saves large photos at lower quality. Text stays selectable.",
+  "compressStrong": "Strong",
+  "compressStrongDesc": "Turns every page into an image. Smallest size.",
+  "compressStrongWarning": "After strong compression, text can no longer be selected, copied or searched.",
+  "compressDpi": "Page image resolution",
+  "dpiValue": "{dpi} DPI",
+  "@dpiValue": {
+    "placeholders": {
+      "dpi": {
+        "type": "int"
+      }
+    }
+  },
+  "compressAction": "Compress",
+  "compressResult": "From {before} to {after}",
+  "@compressResult": {
+    "placeholders": {
+      "before": {
+        "type": "String"
+      },
+      "after": {
+        "type": "String"
+      }
+    }
+  },
+  "compressSaved": "You saved {percent}%",
+  "@compressSaved": {
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "compressNotSmaller": "The result was not smaller than the original ({after} vs {before}), so your original is kept and nothing new was saved.",
+  "@compressNotSmaller": {
+    "placeholders": {
+      "before": {
+        "type": "String"
+      },
+      "after": {
+        "type": "String"
+      }
+    }
+  },
+  "compressFellBack": "This file has no photos that can be shrunk safely, so light compression was used.",
+  "compressImagesRecoded": "Photos re-saved: {count}",
+  "@compressImagesRecoded": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "originalSize": "Original",
+  "newSize": "New",
+  "formatLabel": "Format",
+  "resolutionLabel": "Resolution",
+  "pagesLabel": "Pages",
+  "allPages": "All pages",
+  "onePage": "One page",
+  "pageNumberLabel": "Page number",
+  "dpiScreen": "72 · screen",
+  "dpiStandard": "150 · standard",
+  "dpiPrint": "300 · print",
+  "convertAction": "Convert",
+  "pageSizeLabel": "Page size",
+  "pageSizeA4": "A4",
+  "pageSizeLetter": "Letter",
+  "pageSizeFit": "Same as image",
+  "orientationLabel": "Orientation",
+  "orientationAuto": "Auto",
+  "orientationPortrait": "Portrait",
+  "orientationLandscape": "Landscape",
+  "marginsLabel": "Margins",
+  "marginNone": "None",
+  "marginSmall": "Small",
+  "marginLarge": "Large",
+  "fitLabel": "Image fit",
+  "fitContain": "Fit inside",
+  "fitCover": "Fill page",
+  "imagesHint": "Drag to reorder. One image per page.",
+  "imagesNeedOne": "Add at least one image.",
+  "createPdfAction": "Create PDF",
+  "wmTypeText": "Text",
+  "wmTypeImage": "Image",
+  "wmTextLabel": "Watermark text",
+  "wmTextDefault": "Confidential",
+  "wmChooseImage": "Choose image",
+  "positionLabel": "Position",
+  "opacityLabel": "Opacity",
+  "rotationLabel": "Rotation",
+  "fontSizeLabel": "Text size",
+  "imageSizeLabel": "Image width",
+  "applyToLabel": "Apply to",
+  "selectedPages": "Selected pages",
+  "wmTextAsImageNote": "Text is added as an image so Arabic shows correctly. It can't be selected or searched in the result.",
+  "wmAction": "Add watermark",
+  "posTopLeft": "Top left",
+  "posTopCenter": "Top center",
+  "posTopRight": "Top right",
+  "posCenterLeft": "Middle left",
+  "posCenter": "Center",
+  "posCenterRight": "Middle right",
+  "posBottomLeft": "Bottom left",
+  "posBottomCenter": "Bottom center",
+  "posBottomRight": "Bottom right",
+  "pnStart": "Start at",
+  "pnFormat": "Format",
+  "pnEastern": "Eastern Arabic digits (١٢٣)",
+  "pnSkipFirst": "Don't number the first page",
+  "pnSkipFirstHelp": "The cover still counts.",
+  "pnAction": "Add numbers",
+  "pnPreview": "Preview: {label}",
+  "@pnPreview": {
+    "placeholders": {
+      "label": {
+        "type": "String"
+      }
+    }
+  },
+  "sigNotice": "This is a drawn signature: an image of your signature. It is not a digital or certified signature.",
+  "sigDraw": "Draw",
+  "sigUpload": "Upload image",
+  "sigClear": "Clear",
+  "sigUndo": "Undo",
+  "sigInk": "Ink",
+  "sigThickness": "Thickness",
+  "sigRemoveBg": "Remove white background",
+  "sigDrawHere": "Draw your signature here",
+  "sigNext": "Place on page",
+  "sigPlaceHint": "Drag to move. Drag the corner to resize.",
+  "sigPage": "Page",
+  "sigAllPages": "Put it on every page",
+  "sigEmpty": "Draw or upload a signature first.",
+  "sigAction": "Save signed copy",
+  "colorBlack": "Black",
+  "colorBlue": "Blue",
+  "teNoText": "This page has no text layer.",
+  "teOcrSuggest": "Some pages look scanned. You can read them with OCR.",
+  "teAllEmpty": "This PDF has no text layer. It is probably a scan.",
+  "teOpenOcr": "Read with OCR",
+  "copyAll": "Copy all",
+  "copied": "Copied",
+  "exportTxt": "Save as TXT",
+  "exportDocx": "Save as Word (DOCX)",
+  "teAction": "Extract text",
+  "ocrLanguage": "Language",
+  "ocrLangAr": "Arabic",
+  "ocrLangEn": "English",
+  "ocrLangBoth": "Arabic + English",
+  "ocrPreprocess": "Image clean-up",
+  "ocrGrayscale": "Grayscale",
+  "ocrContrast": "Boost contrast",
+  "ocrBinarize": "Black & white",
+  "ocrSource": "Source",
+  "ocrPdfPage": "PDF page",
+  "ocrLowConfidence": "Highlighted words are uncertain. Please check them.",
+  "ocrUncertainCount": "Uncertain words: {count}",
+  "@ocrUncertainCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "ocrNoText": "No text was found in this image.",
+  "ocrEditable": "You can edit the text before saving.",
+  "ocrAccuracyNote": "OCR can make mistakes, especially with handwriting or blurry photos.",
+  "ocrAction": "Read text",
+  "fiPages": "Pages",
+  "fiPageSizes": "Page sizes",
+  "fiFileSize": "File size",
+  "fiVersion": "PDF version",
+  "fiTitle": "Title",
+  "fiAuthor": "Author",
+  "fiSubject": "Subject",
+  "fiKeywords": "Keywords",
+  "fiCreator": "Created with",
+  "fiProducer": "Producer",
+  "fiCreated": "Created",
+  "fiModified": "Modified",
+  "fiEncrypted": "Password-protected",
+  "fiClearMeta": "Remove metadata",
+  "fiClearMetaNote": "Creates a copy without the title, author, dates and other metadata. Bookmarks and form fields are not kept in the copy.",
+  "fiEncryptedNote": "Details are hidden because the file is protected.",
+  "viewerSearch": "Search in document",
+  "viewerNoResults": "No matches",
+  "viewerMatchCount": "{current} of {total}",
+  "@viewerMatchCount": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "viewerGoTo": "Go to page",
+  "viewerGo": "Go",
+  "viewerNight": "Night mode",
+  "viewerThumbs": "Pages",
+  "viewerPrev": "Previous match",
+  "viewerNext": "Next match",
+  "passwordTitle": "Password required",
+  "passwordBody": "This PDF is protected. Enter its password to view it.",
+  "passwordLabel": "Password",
+  "passwordWrong": "Wrong password. Try again.",
+  "viewerEncryptedNote": "View only: editing tools can't process protected files.",
+  "filesTitle": "My files",
+  "tabRecent": "Recent",
+  "tabAll": "All",
+  "tabFavorites": "Favorites",
+  "searchFiles": "Search by name",
+  "filterAll": "All types",
+  "filterPdf": "PDF",
+  "filterImage": "Images",
+  "filterText": "Text",
+  "filterZip": "ZIP",
+  "sortBy": "Sort",
+  "sortDate": "Date",
+  "sortName": "Name",
+  "sortSize": "Size",
+  "rename": "Rename",
+  "renameTitle": "Rename file",
+  "nameLabel": "Name",
+  "favorite": "Add to favorites",
+  "unfavorite": "Remove from favorites",
+  "moveToTrash": "Move to trash",
+  "movedToTrash": "Moved to trash",
+  "undo": "Undo",
+  "trash": "Trash",
+  "restore": "Restore",
+  "deleteForever": "Delete forever",
+  "emptyTrash": "Empty trash",
+  "trashNote": "Items in the trash are deleted for good after 30 days.",
+  "confirmDeleteForever": "Delete permanently? This can't be undone.",
+  "selectMode": "Select",
+  "selectedN": "{count} selected",
+  "@selectedN": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "importFiles": "Import",
+  "imported": "Imported",
+  "filesEmpty": "No files yet. Create one with a tool or import a file.",
+  "favoritesEmpty": "Star files to find them quickly here.",
+  "trashEmpty": "The trash is empty.",
+  "searchEmpty": "No files match your search.",
+  "storageUsed": "{appName} is using {size}",
+  "@storageUsed": {
+    "placeholders": {
+      "appName": {
+        "type": "String"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "storageFree": "{size} free on this device",
+  "@storageFree": {
+    "placeholders": {
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "useInTool": "Use in a tool",
+  "kindPdf": "PDF",
+  "kindImage": "Image",
+  "kindText": "Text",
+  "kindZip": "ZIP",
+  "kindDocx": "Word",
+  "kindOther": "File",
+  "sharedInTitle": "What would you like to do?",
+  "saveToMyFiles": "Save to My files",
+  "goToTools": "Browse tools",
+  "settingsTitle": "Settings",
+  "language": "Language",
+  "langArabic": "العربية",
+  "langEnglish": "English",
+  "theme": "Theme",
+  "themeSystem": "Same as device",
+  "themeLight": "Light",
+  "themeDark": "Dark",
+  "ocrData": "OCR language data",
+  "ocrDataDesc": "Built into the app, nothing is downloaded. A ready copy is kept for fast OCR; you can remove it to free space and it will be prepared again when needed.",
+  "ocrReady": "Ready · {size}",
+  "@ocrReady": {
+    "placeholders": {
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "ocrNotReady": "Not prepared · {size} in the app",
+  "@ocrNotReady": {
+    "placeholders": {
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "prepare": "Prepare",
+  "storage": "Storage",
+  "clearAllData": "Delete all data",
+  "clearAllConfirm": "This deletes all your files, the trash and your settings in {appName}. Continue?",
+  "@clearAllConfirm": {
+    "placeholders": {
+      "appName": {
+        "type": "String"
+      }
+    }
+  },
+  "dataCleared": "All data deleted",
+  "privacyPolicy": "Privacy policy",
+  "licenses": "Open-source licenses",
+  "about": "About",
+  "versionLabel": "Version {version}",
+  "@versionLabel": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "aboutBody": "{appName} is a set of Arabic-first PDF and image tools that work entirely on your device. No account, no uploads, and it works offline.",
+  "@aboutBody": {
+    "placeholders": {
+      "appName": {
+        "type": "String"
+      }
+    }
+  },
+  "privacyTitle": "Privacy policy",
+  "privacyIntro": "{appName} processes your files only on your device. This page explains exactly what that means.",
+  "@privacyIntro": {
+    "placeholders": {
+      "appName": {
+        "type": "String"
+      }
+    }
+  },
+  "privacyStoredTitle": "What is stored",
+  "privacyStoredBody": "Files you create or import, your trash, and your settings (language and theme). They are kept in the app's private storage on this device only.",
+  "privacyNeverTitle": "What is never collected",
+  "privacyNeverBody": "We don't collect, upload or share your files or their contents. The app has no account, no analytics, no tracking and no ads in this version. It makes no network requests while you use it: fonts, OCR language data and the PDF engine are all inside the app.",
+  "privacyDeleteTitle": "How to delete everything",
+  "privacyDeleteBody": "Settings → Delete all data removes every file, the trash and your settings. Uninstalling the app also removes all of its data.",
+  "privacyChangesTitle": "Changes",
+  "privacyChangesBody": "If a future version adds ads or any online feature, this policy will be updated before that version is released, and you will see what changes.",
+  "licensesIntro": "{appName} is built with free, open-source software. Thank you to these projects:",
+  "@licensesIntro": {
+    "placeholders": {
+      "appName": {
+        "type": "String"
+      }
+    }
+  },
+  "licensesAll": "Show all license texts",
+  "more": "More options"
+}

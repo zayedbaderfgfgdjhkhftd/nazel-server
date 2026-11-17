@@ -1,0 +1,39 @@
+Native components bundled in the Android app
+============================================
+
+PDFium (https://pdfium.googlesource.com/pdfium/)
+  BSD-3-Clause and Apache-2.0. Prebuilt by bblanchon/pdfium-binaries (MIT build
+  scripts). PDFium includes third-party code under these licences:
+  - FreeType: used under the FreeType License (FTL).
+    Portions of this software are copyright (c) The FreeType Project
+    (www.freetype.org). All rights reserved.
+  - libjpeg-turbo: IJG License and BSD-3-Clause. This software is based in part
+    on the work of the Independent JPEG Group.
+  - libpng: PNG Reference Library License v2.
+  - zlib: zlib License.
+  - Little CMS (lcms2): MIT.
+  - OpenJPEG: BSD-2-Clause.
+  - Abseil: Apache-2.0.
+  - ICU: Unicode License v3.
+  - AGG 2.3: permissive (copyright Maxim Shemanarev).
+
+Tesseract OCR (https://github.com/tesseract-ocr/tesseract)
+  Apache-2.0.
+
+Tesseract4Android (https://github.com/adaptech-cz/Tesseract4Android)
+  Apache-2.0. Includes Leptonica (BSD-2-Clause), libjpeg-turbo, libpng.
+
+tessdata_fast language models ara, eng
+(https://github.com/tesseract-ocr/tessdata_fast)
+  Apache-2.0.
+
+Readex Pro font (https://github.com/ThomasJockin/readexpro)
+  SIL Open Font License 1.1. Static weights 400/500/700 were instanced from
+  the variable font; the font name is unchanged as permitted for unmodified
+  instances of the Reserved Font Name (no Reserved Font Name is declared).
+
+Lucide icons (https://lucide.dev)
+  ISC License.
+
+Flutter engine (https://github.com/flutter/engine)
+  BSD-3-Clause, with third-party components listed on the in-app licence page.

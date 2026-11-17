@@ -1,0 +1,60 @@
+name: satr_pdf
+description: "Satr PDF - Arabic-first, private, offline PDF and image tools."
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.14.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  material_ui: ^1.1.0
+  # PDF engine (PDFium, BSD-3/Apache-2.0) + viewer. MIT.
+  pdfrx: ^2.13.0
+  pdfium_dart: ^0.4.3
+  ffi: ^2.2.0
+  # PDF generation (Apache-2.0).
+  pdf: ^3.13.1
+  # Images (MIT), ZIP (MIT).
+  image: ^4.13.1
+  archive: ^4.7.1
+  # OCR: Tesseract (BSD-3 plugin, Apache-2.0 engine + models).
+  tesseract_ocr: ^0.6.0
+  # Platform helpers (BSD-3 / MIT).
+  file_picker: ^13.4.0
+  share_plus: ^13.3.1
+  path_provider: ^2.1.6
+  path: ^1.9.1
+  intl: ^0.20.3
+  # UI (MIT / BSD-3).
+  flutter_svg: ^2.4.0
+  reorderable_grid: ^1.0.13
+  cupertino_ui: ^1.1.7
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  integration_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
+  generate: true
+  assets:
+    - assets/brand/
+    - assets/fonts/
+    - assets/tessdata/
+    - assets/licenses/
+  fonts:
+    - family: ReadexPro
+      fonts:
+        - asset: assets/fonts/ReadexPro-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/ReadexPro-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/ReadexPro-Bold.ttf
+          weight: 700
