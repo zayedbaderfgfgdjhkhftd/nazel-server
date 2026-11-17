@@ -10,6 +10,7 @@ import '../features/files/files_screen.dart';
 import '../features/home/home_screen.dart';
 import '../features/settings/settings_screen.dart';
 import '../features/tools/tools_screen.dart';
+import '../features/viewer/file_tools_sheet.dart';
 import 'services.dart';
 
 /// Bottom navigation: Home · Tools · My files · Settings.
@@ -48,7 +49,10 @@ class _AppShellState extends State<AppShell> {
     if (!mounted) return;
     final valid = await validateInputs(context, inputs, PickKind.pdfOrImage);
     if (valid.isEmpty || !mounted) return;
-    if (valid.length == 1) {
+    if (valid.length == 1 && files.first.isView) {
+      // "Open with Satr": show the file straight away.
+      await openInputInViewer(context, valid.first);
+    } else if (valid.length == 1) {
       await chooseToolFor(context, valid.first, offerSave: true);
     } else {
       final store = AppScope.of(context).files;

@@ -573,5 +573,7 @@
     }
   },
   "licensesAll": "Show all license texts",
-  "more": "More options"
+  "more": "More options",
+  "openFile": "Open file",
+  "viewerTools": "Tools for this file"
 }

@@ -2299,6 +2299,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'More options'**
   String get more;
+
+  /// No description provided for @openFile.
+  ///
+  /// In en, this message translates to:
+  /// **'Open file'**
+  String get openFile;
+
+  /// No description provided for @viewerTools.
+  ///
+  /// In en, this message translates to:
+  /// **'Tools for this file'**
+  String get viewerTools;
 }
 
 class _AppLocalizationsDelegate

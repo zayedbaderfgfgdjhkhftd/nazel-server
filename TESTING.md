@@ -11,7 +11,8 @@ listed at the end.
 |---|---|---|
 | Static analysis | `flutter analyze` | No issues found (exit code 0; generated l10n code excluded) |
 | Unit + widget tests | `flutter test` | **71 / 71 passed** |
-| End-to-end on the real app (Linux desktop build, real PDFium + Tesseract) | `xvfb-run flutter test integration_test -d linux` | **7 / 7 passed** |
+| End-to-end on the real app (Linux desktop build, real PDFium + Tesseract) | `xvfb-run flutter test integration_test -d linux` | **9 / 9 passed** |
+| GitHub Actions (ubuntu-24.04) | `.github/workflows/build.yml` | analyze + all tests + APK/AAB build **succeed** (run 44124439159) |
 | Android release build | `flutter build apk --release` | builds; arm64 APK permissions contain **no INTERNET** |
 | Licence audit | `python3 tool/licenses/audit.py` | passes: 7 Apache-2.0, 84 BSD-3, 23 MIT, 1 MPL-2.0 (Linux-only `dbus`), no GPL/AGPL |
 | AdMob switch | `tool/admob/enable_admob.sh <Google test ids>` on a copy | dependency added, config/manifest updated, AdMob code analyses clean |
@@ -69,13 +70,23 @@ Real app UI, real engines, phone-sized view (390×844 @3x):
 4. **Images → PDF** (English): JPG + PNG → 2-page PDF.
 5. **OCR** (Arabic image): the editable result contains «سطر» and «الملفات».
 6. **My files** (English): rename → move to trash → restore.
-7. Home in English (screenshot).
+7. **Viewer**: a PDF opened from My files is displayed (page indicator
+   «صفحة 1 من 3» appears once PDFium has loaded it).
+8. **Picked / "Open with" file**: opens straight in the viewer; "Save to My
+   files" from the menu stores it; "Tools for this file" lists the PDF tools.
+9. Home in English (screenshot).
 
 Screenshots: `store/screenshots/` (Arabic and English).
 
-> This e2e run found and fixed two real bugs: tool screens' bottom button
+> These e2e runs found and fixed real bugs: tool screens' bottom button
 > took the whole screen height (body invisible), and the Linux OCR plugin
 > returns plain text instead of hOCR (now handled).
+>
+> Version 1.0.1 fixes "PDFs don't open" reported from a real phone: a file
+> chosen on Home or opened with "Open with" now goes straight to the viewer;
+> Flutter deep linking is disabled so Android's content:// link is not taken
+> as a route; and files copied after Dart asked for them on a cold start are
+> now delivered instead of lost.
 
 ## Measured numbers
 

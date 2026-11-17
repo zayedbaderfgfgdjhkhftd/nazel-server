@@ -15,8 +15,9 @@ Native Android app built with **Flutter/Dart**; AdMob-ready (ads are off).
 
 التفاصيل والقيود بصدق: [`FEATURES.md`](FEATURES.md) · نتائج الاختبارات الحقيقية: [`TESTING.md`](TESTING.md)
 
-## تنزيل APK للتجربة (بدون تثبيت أي شيء)
-كل رفع للمستودع يبني التطبيق على GitHub تلقائيًا: **Actions ← آخر تشغيل ← Artifacts ← `satr-pdf-apk`**. التفاصيل في [`DEPLOYMENT.md`](DEPLOYMENT.md).
+## تنزيل APK للتجربة
+- **رابط مباشر (أحدث نسخة):** فرع `satr-pdf-download` ← `Satr-PDF-arm64.apk` (لأغلب الهواتف) أو `Satr-PDF-armv7.apk` (للهواتف القديمة).
+- أو: كل رفع للمستودع يبني التطبيق على GitHub تلقائيًا: **Actions ← آخر تشغيل ← Artifacts ← `satr-pdf-apk`**. التفاصيل في [`DEPLOYMENT.md`](DEPLOYMENT.md).
 
 ## التشغيل والبناء (للمطوّرين)
 المتطلبات: Flutter 3.50 (Dart 3.14)، Android SDK (platform 36، NDK 28.2)، JDK 21.

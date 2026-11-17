@@ -3,18 +3,26 @@ import 'dart:io';
 import 'package:material_ui/material_ui.dart';
 import 'package:pdfrx/pdfrx.dart';
 
+import '../../app/services.dart';
 import '../../components/common.dart';
 import '../../components/l10n_ext.dart';
 import '../../core/arabic/normalize.dart';
+import '../../core/pdf/pdf_service.dart';
+import '../../core/share/share_service.dart';
 import '../../design/icons.dart';
 import '../../design/tokens.dart';
+import 'file_tools_sheet.dart';
 
 /// PDF viewer: scroll, pinch-zoom, thumbnails, go to page, search, night mode.
 /// Protected PDFs can be viewed after entering the password (view only).
 class ViewerScreen extends StatefulWidget {
-  const ViewerScreen({super.key, required this.file, required this.title});
+  const ViewerScreen({super.key, required this.file, required this.title, this.source});
   final File file;
   final String title;
+
+  /// Set when the file is NOT in My files yet (picked, shared or "Open with"):
+  /// the menu then offers "Save to My files".
+  final InputFile? source;
 
   @override
   State<ViewerScreen> createState() => _ViewerScreenState();
@@ -25,6 +33,7 @@ class _ViewerScreenState extends State<ViewerScreen> {
   late final PdfTextSearcher _searcher = PdfTextSearcher(_controller)..addListener(_onSearch);
   final _searchField = TextEditingController();
   bool _night = false;
+  bool _savedToLibrary = false;
   bool _searching = false;
   bool _encrypted = false;
   int _passwordAttempts = 0;
@@ -150,6 +159,26 @@ class _ViewerScreenState extends State<ViewerScreen> {
     );
   }
 
+  PopupMenuItem<String> _menuItem(String value, String icon, String label) => PopupMenuItem(
+        value: value,
+        child: Row(children: [SatrIcon(icon, size: 20), const SizedBox(width: Space.m), Text(label)]),
+      );
+
+  Future<void> _saveToLibrary() async {
+    final src = widget.source;
+    if (src == null) return;
+    await AppScope.of(context).files.addBytes(src.name, src.bytes, tool: 'import');
+    if (!mounted) return;
+    setState(() => _savedToLibrary = true);
+    showMessage(context, context.l10n.resultSaved);
+  }
+
+  Future<void> _tools() async {
+    final bytes = widget.source?.bytes ?? await widget.file.readAsBytes();
+    if (!mounted) return;
+    await showFileToolsSheet(context, InputFile(widget.title, bytes));
+  }
+
   @override
   Widget build(BuildContext context) {
     final l = context.l10n;
@@ -235,13 +264,25 @@ class _ViewerScreenState extends State<ViewerScreen> {
                 tooltip: l.viewerSearch,
                 onPressed: () => setState(() => _searching = true),
                 icon: const SatrIcon('search')),
-            IconButton(tooltip: l.viewerThumbs, onPressed: _thumbnails, icon: const SatrIcon('thumbnails')),
-            IconButton(tooltip: l.viewerGoTo, onPressed: _goTo, icon: const SatrIcon('gotoPage')),
-            IconButton(
-              tooltip: l.viewerNight,
-              isSelected: _night,
-              onPressed: () => setState(() => _night = !_night),
-              icon: SatrIcon(_night ? 'sun' : 'moon'),
+            IconButton(tooltip: l.viewerTools, onPressed: _tools, icon: const SatrIcon('tools')),
+            PopupMenuButton<String>(
+              tooltip: l.more,
+              icon: const SatrIcon('more'),
+              onSelected: (v) => switch (v) {
+                'save' => _saveToLibrary(),
+                'share' => ShareService.shareFile(widget.file, widget.title),
+                'thumbs' => _thumbnails(),
+                'goto' => _goTo(),
+                _ => setState(() => _night = !_night),
+              },
+              itemBuilder: (_) => [
+                if (widget.source != null && !_savedToLibrary)
+                  _menuItem('save', 'folder', l.saveToMyFiles),
+                _menuItem('share', 'share', l.share),
+                _menuItem('thumbs', 'thumbnails', l.viewerThumbs),
+                _menuItem('goto', 'gotoPage', l.viewerGoTo),
+                _menuItem('night', _night ? 'sun' : 'moon', l.viewerNight),
+              ],
             ),
           ],
         ],
@@ -272,13 +313,33 @@ class _ViewerScreenState extends State<ViewerScreen> {
 }
 
 class ImageViewerScreen extends StatelessWidget {
-  const ImageViewerScreen({super.key, required this.file, required this.title});
+  const ImageViewerScreen({super.key, required this.file, required this.title, this.source});
   final File file;
   final String title;
 
+  /// Set when the image is not in My files yet.
+  final InputFile? source;
+
   @override
   Widget build(BuildContext context) => Scaffold(
-        appBar: AppBar(title: Text(title, maxLines: 1, overflow: TextOverflow.ellipsis)),
+        appBar: AppBar(
+          title: Text(title, maxLines: 1, overflow: TextOverflow.ellipsis),
+          actions: [
+            IconButton(
+              tooltip: context.l10n.viewerTools,
+              icon: const SatrIcon('tools'),
+              onPressed: () async {
+                final bytes = source?.bytes ?? await file.readAsBytes();
+                if (context.mounted) await showFileToolsSheet(context, InputFile(title, bytes));
+              },
+            ),
+            IconButton(
+              tooltip: context.l10n.share,
+              icon: const SatrIcon('share'),
+              onPressed: () => ShareService.shareFile(file, title),
+            ),
+          ],
+        ),
         body: InteractiveViewer(
           maxScale: 8,
           child: Center(

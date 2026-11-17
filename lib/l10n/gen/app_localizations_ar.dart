@@ -1216,4 +1216,10 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get more => 'المزيد';
+
+  @override
+  String get openFile => 'فتح الملف';
+
+  @override
+  String get viewerTools => 'أدوات لهذا الملف';
 }

@@ -1,3 +1,4 @@
+import 'dart:async';
 // End-to-end flows on the real app (real PDFium, real Tesseract), driven
 // through the UI. Run on Linux desktop (CI/dev machine):
 //   xvfb-run flutter test integration_test -d linux
@@ -18,6 +19,9 @@ import 'package:satr_pdf/core/platform/platform_bridge.dart';
 import 'package:satr_pdf/core/storage/file_store.dart';
 import 'package:satr_pdf/core/storage/settings_store.dart';
 import 'package:satr_pdf/features/tools/tools_screen.dart';
+import 'package:satr_pdf/features/home/home_screen.dart';
+import 'package:satr_pdf/features/viewer/file_tools_sheet.dart';
+import 'package:satr_pdf/core/pdf/pdf_service.dart';
 
 final _boundary = GlobalKey();
 
@@ -203,6 +207,37 @@ void main() {
     await tester.tap(find.byTooltip('Restore'));
     await tester.pumpAndSettle();
     expect(s.files.active.single.name, 'contract.pdf');
+  });
+
+  testWidgets('viewer shows a PDF opened from My files (Arabic)', (tester) async {
+    await _boot(tester, seed: ['three_pages.pdf']);
+    await tester.tap(find.text('ملفاتي').last);
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('الكل'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('three_pages.pdf').first);
+    // The page indicator only appears once PDFium has loaded the document.
+    await pumpUntil(tester, find.text('صفحة 1 من 3'));
+    await screenshot(tester, 'ar_07_viewer');
+  });
+
+  testWidgets('a picked or shared PDF opens straight in the viewer and can be saved (Arabic)', (tester) async {
+    final s = await _boot(tester);
+    final ctx = tester.element(find.byType(HomeScreen));
+    // Same path as Home "Choose a file" and Android "Open with".
+    unawaited(openInputInViewer(ctx, InputFile('عقد.pdf', File('test/fixtures/three_pages.pdf').readAsBytesSync())));
+    await pumpUntil(tester, find.text('صفحة 1 من 3'));
+    await tester.tap(find.byTooltip('المزيد'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('حفظ في ملفاتي'));
+    await tester.pumpAndSettle();
+    expect(s.files.active.single.name, 'عقد.pdf');
+    await tester.tap(find.byTooltip('أدوات لهذا الملف'));
+    await tester.pumpAndSettle();
+    // The sheet lists the PDF tools (long list: check the first ones).
+    expect(find.text('أدوات لهذا الملف'), findsOneWidget);
+    expect(find.text('دمج ملفات PDF'), findsWidgets);
+    await screenshot(tester, 'ar_08_viewer_tools');
   });
 
   testWidgets('home (English) screenshot', (tester) async {

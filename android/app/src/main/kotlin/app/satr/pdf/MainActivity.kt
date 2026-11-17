@@ -26,6 +26,9 @@ class MainActivity : FlutterActivity() {
     private val io = Executors.newSingleThreadExecutor()
     private var pending: List<Map<String, String?>> = emptyList()
 
+    /** True once Dart has asked for the launch files; later copies are pushed. */
+    private var dartAsked = false
+
     override fun configureFlutterEngine(flutterEngine: FlutterEngine) {
         super.configureFlutterEngine(flutterEngine)
         val ch = MethodChannel(flutterEngine.dartExecutor.binaryMessenger, channelName)
@@ -40,6 +43,7 @@ class MainActivity : FlutterActivity() {
                 }
                 "freeSpace" -> result.success(StatFs(filesDir.path).availableBytes)
                 "takeSharedFiles" -> {
+                    dartAsked = true
                     result.success(pending)
                     pending = emptyList()
                 }
@@ -50,13 +54,13 @@ class MainActivity : FlutterActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        if (savedInstanceState == null) handleIntent(intent, initial = true)
+        if (savedInstanceState == null) handleIntent(intent)
     }
 
     override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
         setIntent(intent)
-        handleIntent(intent, initial = false)
+        handleIntent(intent)
     }
 
     private fun urisOf(intent: Intent): List<Uri> = when (intent.action) {
@@ -71,17 +75,22 @@ class MainActivity : FlutterActivity() {
         else -> emptyList()
     }
 
-    private fun handleIntent(intent: Intent?, initial: Boolean) {
+    private fun handleIntent(intent: Intent?) {
         if (intent == null) return
         val uris = urisOf(intent)
         if (uris.isEmpty()) return
+        val action = if (intent.action == Intent.ACTION_VIEW) "view" else "send"
         io.execute {
-            val files = uris.take(50).mapNotNull { copyToCache(it) }
+            val files = uris.take(50).mapNotNull { copyToCache(it, action) }
+            if (files.isEmpty()) return@execute
             runOnUiThread {
-                if (initial || channel == null) {
-                    pending = pending + files
+                // Before Dart asked (cold start), keep them for takeSharedFiles;
+                // after that (slow copy, or a new intent), push them directly.
+                val ch = channel
+                if (dartAsked && ch != null) {
+                    ch.invokeMethod("sharedFiles", files)
                 } else {
-                    channel?.invokeMethod("sharedFiles", files)
+                    pending = pending + files
                 }
             }
         }
@@ -98,14 +107,19 @@ class MainActivity : FlutterActivity() {
         return (name ?: uri.lastPathSegment ?: "file").replace(Regex("[\\\\/:*?\"<>|]"), "_")
     }
 
-    private fun copyToCache(uri: Uri): Map<String, String?>? = try {
+    private fun copyToCache(uri: Uri, action: String): Map<String, String?>? = try {
         val dir = File(cacheDir, "shared").apply { mkdirs() }
         val name = displayName(uri)
         val target = File(dir, "${System.nanoTime()}_$name")
         contentResolver.openInputStream(uri)?.use { input ->
             target.outputStream().use { output -> input.copyTo(output) }
         } ?: return null
-        mapOf("path" to target.absolutePath, "name" to name, "mime" to contentResolver.getType(uri))
+        mapOf(
+            "path" to target.absolutePath,
+            "name" to name,
+            "mime" to contentResolver.getType(uri),
+            "action" to action,
+        )
     } catch (_: Exception) {
         null
     }

@@ -12,7 +12,7 @@ class AppConfig {
   static const String appNameEn = 'Satr PDF';
 
   /// Shown in Settings > About. Keep in sync with pubspec.yaml `version`.
-  static const String version = '1.0.0';
+  static const String version = '1.0.1';
 
   /// Android application id (Google Play package name).
   static const String packageId = 'app.satr.pdf';

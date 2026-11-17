@@ -6,10 +6,13 @@ import 'package:flutter/services.dart';
 /// A file another app shared with Satr (Android share sheet / "Open with").
 /// It has already been copied into the app's cache by the native side.
 class SharedInFile {
-  SharedInFile({required this.path, required this.name, this.mime});
+  SharedInFile({required this.path, required this.name, this.mime, this.isView = false});
   final String path;
   final String name;
   final String? mime;
+
+  /// True for "Open with" (ACTION_VIEW): the user wants to see the file.
+  final bool isView;
 }
 
 /// Small native bridge (see android/app/src/main/kotlin/.../MainActivity.kt).
@@ -70,6 +73,7 @@ class PlatformBridge {
             path: e['path'] as String,
             name: (e['name'] as String?) ?? 'file',
             mime: e['mime'] as String?,
+            isView: e['action'] == 'view',
           ),
     ];
   }

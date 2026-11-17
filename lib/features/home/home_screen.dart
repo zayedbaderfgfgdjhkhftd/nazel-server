@@ -12,6 +12,7 @@ import '../../design/icons.dart';
 import '../../design/tokens.dart';
 import '../files/file_actions.dart';
 import '../tools/tool_registry.dart';
+import '../viewer/file_tools_sheet.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key, required this.onSeeAllFiles});
@@ -25,10 +26,12 @@ class HomeScreen extends StatelessWidget {
     return l.greetingEvening;
   }
 
+  /// Picking a file opens it right away (PDF viewer / image viewer); the
+  /// viewer offers "Tools for this file" and "Save to My files".
   Future<void> _pickAny(BuildContext context) async {
     final picked = await pickFromDevice(context, kind: PickKind.pdfOrImage);
     if (picked.isEmpty || !context.mounted) return;
-    await chooseToolFor(context, picked.first);
+    await openInputInViewer(context, picked.first);
   }
 
   @override
@@ -248,7 +251,12 @@ Future<void> chooseToolFor(BuildContext context, InputFile f, {bool offerSave = 
               child: Text(f.name, maxLines: 1, overflow: TextOverflow.ellipsis, style: Theme.of(c).textTheme.bodySmall),
             ),
             ListTile(
-              leading: const IconTile('folder', size: 40, highlighted: true),
+              leading: const IconTile('eye', size: 40, highlighted: true),
+              title: Text(l.openFile),
+              onTap: () => Navigator.of(c).pop('open'),
+            ),
+            ListTile(
+              leading: const IconTile('folder', size: 40),
               title: Text(l.saveToMyFiles),
               onTap: () => Navigator.of(c).pop('save'),
             ),
@@ -265,7 +273,9 @@ Future<void> chooseToolFor(BuildContext context, InputFile f, {bool offerSave = 
     ),
   );
   if (!context.mounted || choice == null) return;
-  if (choice == 'save') {
+  if (choice == 'open') {
+    await openInputInViewer(context, f);
+  } else if (choice == 'save') {
     await store.addBytes(f.name, f.bytes, tool: offerSave ? 'shared' : 'import');
     if (context.mounted) showMessage(context, l.resultSaved);
   } else if (choice is ToolId) {

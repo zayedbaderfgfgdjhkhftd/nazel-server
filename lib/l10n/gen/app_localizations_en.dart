@@ -1208,4 +1208,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get more => 'More options';
+
+  @override
+  String get openFile => 'Open file';
+
+  @override
+  String get viewerTools => 'Tools for this file';
 }
